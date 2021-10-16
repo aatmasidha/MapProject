@@ -1,0 +1,48 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>D3 Page Template</title>
+		<!-- <script src="js/d3/d3.js"  type="text/javascript"></script>
+        <script src="js/topojson/topojson.js" type="text/javascript"></script>  -->
+
+        <script src="//d3js.org/d3.v3.min.js"  type="text/javascript"></script>
+        <script src="//d3js.org/topojson.v1.min.js" type="text/javascript"></script> 
+
+		<script src="js/loadmapdata.js"></script>
+	
+		<style>
+            .subunit.SCT { fill: #ddc; }
+            .subunit.WLS { fill: #cdd; }
+            .subunit.NIR { fill: #cdc; }
+            .subunit.ENG { fill: #dcd; }
+            .subunit.IRL { display: none; }
+
+
+            .subunit-boundary {
+                fill: none;
+                stroke: #777;
+                stroke-dasharray: 2,2;
+                stroke-linejoin: round;
+                }
+
+            .place, .place-label {
+                fill: #444;
+                }
+
+            .subunit-boundary.IRL {
+                stroke: #aaa;
+                }
+            
+            text {
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                font-size: 10px;
+                pointer-events: none;
+                }
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript">
+			// d3.json("http://35.233.33.123/Circles/Towns/50").then(function(data){ console.log(data)});
+        </script>
+    </body>
+</html>
