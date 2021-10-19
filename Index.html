@@ -11,10 +11,10 @@
 		<script src="js/loadmapdata.js"></script>
 	
 		<style>
-            .subunit.SCT { fill: #ddc; }
-            .subunit.WLS { fill: #cdd; }
-            .subunit.NIR { fill: #cdc; }
-            .subunit.ENG { fill: #dcd; }
+            .subunit.SCT { fill: #c2e9ff; }
+            .subunit.WLS { fill: #e4d6e1; }
+            .subunit.NIR { fill: #ccf3a7; }
+            .subunit.ENG { fill: #b4eeb2; }
             .subunit.IRL { display: none; }
 
 
@@ -24,11 +24,7 @@
                 stroke-dasharray: 2,2;
                 stroke-linejoin: round;
                 }
-
-            .place, .place-label {
-                fill: #444;
-                }
-
+            
             .subunit-boundary.IRL {
                 stroke: #aaa;
                 }
@@ -37,10 +33,117 @@
                 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
                 font-size: 10px;
                 pointer-events: none;
-                }
+            }
+
+            .place, .place-label {
+                fill: #5f33c5;
+            }
+
+            
+            .subunit-label {
+                fill: #ddcb25;
+                fill-opacity: .5;
+                font-size: 20px;
+                font-weight: 300;
+                text-anchor: middle;
+            }
+
+
+/* Space out content a bit
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+} */
+
+Everything but the jumbotron gets side spacing for mobile first views
+.header,
+/* .marketing, */
+.footer {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+    border-bottom: 1px solid #e5e5e5;
+
+    /* Make the masthead heading the same height as the navigation */
+    h3 {
+        margin-top: 0;
+        margin-bottom: 0;
+        line-height: 40px;
+        padding-bottom: 19px;
+    }
+}
+
+/* Custom page footer */
+.footer {
+    padding-top: 19px;
+    color: #777;
+    border-top: 1px solid #e5e5e5;
+}
+
+.container-narrow > hr {
+    margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+/* .jumbotron {
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+    .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+    }
+} */
+
+/* Supporting marketing content */
+/* .marketing {
+    margin: 40px 0;
+    p + h4 {
+        margin-top: 28px;
+    }
+} */
+
+/* Responsive: Portrait tablets and up */
+/* @media screen and (min-width: 768px) {
+    .container {
+        max-width: 730px;
+    } */
+
+    /* Remove the padding we set earlier */
+    .header,
+    /* .marketing, */
+    .footer {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    /* Space out the masthead */
+    .header {
+        margin-bottom: 30px;
+    }
+    
+    /* Remove the bottom border on the jumbotron for visual effect */
+    /* .jumbotron {
+        border-bottom: 0;
+    } */
+}
+
         </style>
     </head>
     <body>
+        <div class="container">
+            <div class="header">
+                <!-- <ul class="nav nav-pills pull-right">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul> -->
+                <h3 class="text-muted">UK Map</h3>
+            </div>
+
+        </div>
         <script type="text/javascript">
 			// d3.json("http://35.233.33.123/Circles/Towns/50").then(function(data){ console.log(data)});
         </script>
