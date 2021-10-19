@@ -68,11 +68,31 @@
                 .attr("d", path)
                 .attr("class", "subunit-boundary IRL");
             
-            svg.append("path")
-                .datum(topojson.feature(uk, uk.objects.places))
-                .attr("d", path)
-                .attr("class", "place");
+            svg.selectAll(".subunit-label")
+                .data(topojson.feature(uk,uk.objects.subunits).features)
+                .enter().append("text")
+                .attr("class", function(d) {return "subunit-label " + d.id; })
+                .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
+                .attr("dy", ".35em")
+                .text(function(d) { return d.properties.name; });                    
+
+
             //check this code there is problem after this
+            var test_objects_places = {
+                type: "GeometryCollection",
+                geometries: [
+                    {
+                        type: "Point",
+                        coordinates: [6914,5997], // Dundee
+                        properties: {
+                            name: "Dundee"
+                        }
+                    }
+                ]
+            };
+            // projection(test_objects_places.geometries[0].coordinates
+            // test_objects_places.geometries[0].properties.name;
+
             svg.append("path")
                 .datum(topojson.feature(uk,uk.objects.places))
                 .attr("d", path)
@@ -86,17 +106,12 @@
                 .attr("dy", ".35em")
                 .text(function(d) { return d.properties.name; });
 
+
             svg.selectAll(".place-label")
                 .attr("x", function(d) {return d.geometry.coordinates[0] > -1 ? 6: -6;})
                 .style("text-anchor", function(d) {return d.geometry.coordinates[0] > -1 ? "start": "end";});
 
-            svg.selectAll(".subunit-label")
-                .data(topojson.feature(uk,uk.objects.subunits).features)
-                .enter().append("text")
-                .attr("class", function(d) {return "subunit-label " + d.id; })
-                .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
-                .attr("dy", ".35em")
-                .text(function(d) { return d.properties.name; });
+
     });
 }
 
