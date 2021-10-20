@@ -94,10 +94,14 @@
             // test_objects_places.geometries[0].properties.name;
 
             svg.append("path")
-                .datum(topojson.feature(uk,uk.objects.places))
-                .attr("d", path)
-                .attr("class", "place");
-
+                .datum(topojson.feature(uk, uk.objects.places))
+                    .attr("class", "place-label-circle")
+                    .attr("d", path)
+                .append("title").text("Hello\n Population : 34543");
+                
+                
+                
+            
             svg.selectAll(".place-label")
                 .data(topojson.feature(uk, uk.objects.places).features)
                 .enter().append("text")
@@ -105,12 +109,15 @@
                 .attr("transform", function(d) { return "translate(" + projection(d.geometry.coordinates) + ")"; })
                 .attr("dy", ".35em")
                 .text(function(d) { return d.properties.name; });
-
+                
 
             svg.selectAll(".place-label")
                 .attr("x", function(d) {return d.geometry.coordinates[0] > -1 ? 6: -6;})
                 .style("text-anchor", function(d) {return d.geometry.coordinates[0] > -1 ? "start": "end";});
 
+            svg.select(".place-label-circle")
+                 .attr("x", test_objects_places.geometries[0].coordinates[0] > -1 ? 6: -6)
+                 .style("text-anchor", projection(test_objects_places.geometries[0].coordinates[0] > -1 ? "start": "end"));
 
     });
 }
