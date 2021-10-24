@@ -21,15 +21,8 @@
 
             var subunits = topojson.feature(uk, uk.objects.subunits);
 
-            // <!-- mercator is a type of projection -->
+            // <!-- albers is a type of projection -->
             // <!-- Aparna working code -->
-            // var projection = d3.geo.mercator()
-            //         .center([-5, 50])
-            //         .scale(2000)
-            //         .translate([width/2,height/2]);
-
-            // var path = d3.geo.path()
-            // .projection(projection);
 
             var projection = d3.geo.albers()
             .center([0,55.4])
@@ -76,49 +69,59 @@
                 .attr("dy", ".35em")
                 .text(function(d) { return d.properties.name; });                    
 
+            var cityData = [];
+            d3.json("http://35.233.33.123/Circles/Towns/25", function(data){
+                var jsonString = JSON.stringify(data);
+                var urlData = JSON.parse(jsonString);
+                for (var j = 0; j < urlData.length; j++){
 
-            //check this code there is problem after this
-            var test_objects_places = {
-                type: "GeometryCollection",
-                geometries: [
-                    {
-                        type: "Point",
-                        coordinates: [6914,5997], // Dundee
-                        properties: {
-                            name: "Dundee"
-                        }
-                    }
-                ]
-            };
-            // projection(test_objects_places.geometries[0].coordinates
-            // test_objects_places.geometries[0].properties.name;
+                    console.log(urlData[j].Town + ":"+ urlData[j].Population + ":"+ urlData[j].lng + ":"+ urlData[j].lat  );
+    
+                    cityDataAdd = {
+                        name: urlData[j].Town,
+                        population: urlData[j].Population,
+                        lat: urlData[j].lat,
+                        long:  urlData[j].lng 
+                    };
+                    cityData[j] = cityDataAdd;
+                }
+                   
+             console.log("City JSON data:", cityData);
+             svg
+             .selectAll("myCircles")
+             .data(cityData)
+             .enter()
+             .append("circle")
+             .attr("cx", function(d){ return projection([d.long, d.lat])[0] })
+             .attr("cy", function(d){ return projection([d.long, d.lat])[1] })
+             .attr("r", 5)
+             .style("fill", "69b3a2")
+             .attr("stroke", "#69b3a2")
+             .attr("stroke-width", 3)
+             .attr("fill-opacity", .4)
+             .append("title").text(function(d){ return d.population });
 
-            svg.append("path")
-                .datum(topojson.feature(uk, uk.objects.places))
-                    .attr("class", "place-label-circle")
-                    .attr("d", path)
-                .append("title").text("Hello\n Population : 34543");
-                
-                
-                
-            
-            svg.selectAll(".place-label")
-                .data(topojson.feature(uk, uk.objects.places).features)
-                .enter().append("text")
-                .attr("class", "place-label")
-                .attr("transform", function(d) { return "translate(" + projection(d.geometry.coordinates) + ")"; })
-                .attr("dy", ".35em")
-                .text(function(d) { return d.properties.name; });
-                
+             console.log("uk.feature:", topojson.feature(uk, uk.objects.places))
 
-            svg.selectAll(".place-label")
-                .attr("x", function(d) {return d.geometry.coordinates[0] > -1 ? 6: -6;})
-                .style("text-anchor", function(d) {return d.geometry.coordinates[0] > -1 ? "start": "end";});
+             
 
-            svg.select(".place-label-circle")
-                 .attr("x", test_objects_places.geometries[0].coordinates[0] > -1 ? 6: -6)
-                 .style("text-anchor", projection(test_objects_places.geometries[0].coordinates[0] > -1 ? "start": "end"));
 
+             svg.selectAll(".place-label")
+                 .data(cityData)
+                 .enter().append("text")
+                 .attr("class", "place-label")
+                 .attr("transform", function(d) { return "translate(" + projection([d.long,d.lat]) + ")"; })
+                 .attr("dy", ".35em")
+                 .text(function(d) { return d.name; });
+                 
+             svg.selectAll(".place-label")
+                 .attr("x", function(d) {return d.long > -1 ? 6: -6;})
+                 .style("text-anchor", function(d) {return ([d.long, d.lat]) > -1 ? "start": "end";});
+         
+            }) ;   
+             
+             
+        
     });
 }
 
