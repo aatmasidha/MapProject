@@ -1,0 +1,63 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>D3 Page Template</title>
+		<!-- <script src="js/d3/d3.js"  type="text/javascript"></script>
+        <script src="js/topojson/topojson.js" type="text/javascript"></script>  -->
+
+        <script src="//d3js.org/d3.v3.min.js"  type="text/javascript"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	
+		<style>
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h3 class="text-muted">UK Map</h3>
+            </div>
+
+        </div>
+        <script type="text/javascript">
+			d3.json("http://35.233.33.123/Circles/Towns/50", function(data){
+                 console.log(data)
+            var placeName = 'Dundee'
+            console.log(placeName)
+            var s = JSON.stringify(data)
+            // 
+
+            var urlData = JSON.parse(s)
+
+            console.log("**********" , urlData)
+
+            var cityData = [];
+            
+            for (var j = 0; j < urlData.length; j++){
+
+                console.log(urlData[j].Town + ":"+ urlData[j].Population + ":"+ urlData[j].lng + ":"+ urlData[j].lat  );
+
+                cityDataAdd = {
+                    name: urlData[j].Town,
+                    population: urlData[j].Population,
+                    lat: urlData[j].lat,
+                    long:  urlData[j].lng 
+                };
+                cityData[j] = cityDataAdd;
+            }
+
+            console.log("--------- cityData" , cityData);
+            var geocoder = new google.maps.Geocoder();
+            
+            geocoder.geocode ({
+                "address" : "Dundee"
+            }, function(results, status){
+                if(status == google.maps.GeocoderStatus.OK) {
+                    if(status != google.maps.GeocoderStatus.ZERO_RESULTS) {
+                        var latitude = results[0].geometry.location.lat();
+                        var longitude = results[0].geometry.location.lng();
+                }}
+            });
+        });
+        </script>
+    </body>
+</html>
