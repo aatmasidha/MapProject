@@ -75,9 +75,11 @@ function loadData() {
         numTownsString = getCookie("NumberOfTowns");
         if (numTownsString !== null) {
             numTowns = parseInt(numTownsString)
+            document.getElementById("numberInput").value = numTowns;
         }
         else {
             numTowns = 25;
+            document.getElementById("numberInput").value = numTowns;
         }
 
         d3.json("http://35.233.33.123/Circles/Towns/" + numTowns, function (data) {
@@ -125,11 +127,10 @@ function loadData() {
                 .attr("x", function (d) { return d.long > -1 ? 6 : -6; })
                 .style("text-anchor", function (d) { return ([d.long, d.lat]) > -1 ? "start" : "end"; });
 
+            
         });
-
     });
 
-    document.getElementById("numberInput").value = numTowns;
 }
 
 function getCookie(cname) {
