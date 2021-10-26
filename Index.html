@@ -11,124 +11,9 @@
 
     <script src="js/loadmapdata.js"></script>
     <script>var numTowns = 5;</script>
+    <link rel="stylesheet" href="css/styles.css">
 
     <style>
-        /* Styles for the slider - Start*/
-
-
-
-        /* Styles for the slider - End */
-        .subunit.SCT {
-            fill: #c2e9ff;
-        }
-
-        .subunit.WLS {
-            fill: #e4d6e1;
-        }
-
-        .subunit.NIR {
-            fill: #ccf3a7;
-        }
-
-        .subunit.ENG {
-            fill: #b4eeb2;
-        }
-
-        .subunit.IRL {
-            display: none;
-        }
-
-
-        .subunit-boundary {
-            fill: none;
-            stroke: #777;
-            stroke-dasharray: 2, 2;
-            stroke-linejoin: round;
-        }
-
-        .subunit-boundary.IRL {
-            stroke: #aaa;
-        }
-
-        text {
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            font-size: 10px;
-            pointer-events: none;
-        }
-
-        .place,
-        .place-label {
-            fill: #5f33c5;
-        }
-
-
-        .place-label-circle {
-            fill: #f71818;
-        }
-
-        .place-label-circle:hover {
-            fill: #3b088d;
-        }
-
-        .subunit-label {
-            fill: #ddcb25;
-            fill-opacity: .5;
-            font-size: 20px;
-            font-weight: 300;
-            text-anchor: middle;
-        }
-
-
-        /* Space out content a bit
-body {
-    padding-top: 20px;
-    padding-bottom: 20px;
-} */
-
-        Everything but the jumbotron gets side spacing for mobile first views .header,
-        /* .marketing, */
-        .footer {
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-
-        /* Custom page header */
-        .header {
-            border-bottom: 1px solid #e5e5e5;
-
-            /* Make the masthead heading the same height as the navigation */
-            h3 {
-                margin-top: 0;
-                margin-bottom: 0;
-                line-height: 40px;
-                padding-bottom: 19px;
-            }
-        }
-
-        /* Custom page footer */
-        .footer {
-            padding-top: 19px;
-            color: #777;
-            border-top: 1px solid #e5e5e5;
-        }
-
-        .container-narrow>hr {
-            margin: 30px 0;
-        }
-
-
-        /* Remove the padding we set earlier */
-        .header,
-        /* .marketing, */
-        .footer {
-            padding-left: 0;
-            padding-right: 0;
-        }
-
-        /* Space out the masthead */
-        .header {
-            margin-bottom: 30px;
-        }
     </style>
 </head>
 
@@ -139,17 +24,6 @@ body {
         </div>
     </div>
     <div>
-        <!-- <label class="town-slider town-slider--v">
-                <span class="town-slider--label">How Many Town?</span>
-                <span class="town-slider--input">
-                    <input type="range" value="10" min="0" max="50" oninput="doThings(event)" />
-                </span>
-
-                
-            </label>
-            <output>change the slider</output> -->
-
-
         <input type="number" name="numberInput" id="numberInput" max="50" min="1" step="1">
         <button type="button" onclick="myFunction()">sumbit</button>
     </div>
@@ -172,29 +46,6 @@ body {
             document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
             document.getElementById("numberInput").value = cvalue;
         }
-
-
-//
-//                // Slider - Start
-//                const output = document.querySelector('output')
-
-// const doThings = (event) => {
-// 	const { value, min, max, step, parentElement: parent } = event.target
-// 	const decimals = step && step.includes('.') ? step.split('.')[1] : 1
-// 	const percent = `${((value - min)/(max - min) * 100).toFixed(decimals)}%`
-// 	parent.style.setProperty('--p', percent)
-
-// 	output.value = `value: ${value} (${percent})`
-//     numTowns = 20
-//     window.location.reload();
-
-// }
-
-
-
-
-
-        // Slider - End
     </script>
 </body>
 
