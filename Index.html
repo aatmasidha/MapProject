@@ -18,26 +18,35 @@
 </head>
 
 <body>
-    <div class="container">
+    <!-- <div class="container"> -->
+        <div>
         <div class="header">
-            <h3 class="text-muted">UK Map</h3>
+            <h3 class="headerText">UK Map</h3>
         </div>
     </div>
     <div>
-        <input type="number" name="numberInput" id="numberInput" max="50" min="1" step="1">
-        <button type="button" onclick="myFunction()">sumbit</button>
+        <p></p>
+        <label for="numberInput" class="inputLabel">Select number of towns:</label>        
+        <input type="number" name="numberInput" id="numberInput" max="50" min="1" step="1"  class="bigText"  >
+        <button type="button" class="bigText" onclick="myFunction()">sumbit</button>
     </div>
     <script type="text/javascript">
 
         function myFunction() {
             let showTowns = document.getElementById("numberInput").value;
-            numTowns = showTowns;
-            console.log("Show towns:", showTowns);
-            setCookie("NumberOfTowns", numTowns, 1)
-            window.location.reload(true);
-            return; // whatever you want to do with it
-        }
 
+            if (showTowns < 1 || showTowns > 50) {
+                alert("Number must be between 1 and 50");
+                return false;
+            }
+            else {
+                numTowns = showTowns;
+                console.log("Show towns:", showTowns);
+                setCookie("NumberOfTowns", numTowns, 1)
+                window.location.reload(true);
+                return; // whatever you want to do with it
+            }
+        }
 
         function setCookie(cname, cvalue, exdays) {
             const d = new Date();
