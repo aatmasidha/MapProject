@@ -1,19 +1,54 @@
+
+/* Sytle of setting the heading name and background */
+.headerText {
+    border-bottom: 1px solid #e5e5e5;
+    padding: 40px;
+    text-align: center;
+    background: #0aedf5;
+    color: #121213;
+    font-size: 30px;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 50px;
+    padding-bottom: 19px;
+  }
+
+/*This style is for label related to input*/
+.inputLabel{
+    padding-left: 25px;
+    color: #121213;
+    font-size: 14px;
+    font-family: Verdana;
+}
+
+/*Spin control i.e. up and down arrow are not visible */
+/*I have tested this on chrome and edge. Not sure if works on safari*/
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+   opacity: 1;
+}
+
+/* Scotland subunit colour */
 .subunit.SCT {
-    fill: #c2e9ff;
+    fill: #8ae5a5;
 }
 
+/* Wales subunit colour */
 .subunit.WLS {
-    fill: #e4d6e1;
+    fill: #34ec90;
 }
 
+/*North Ireland colour subunit colour */
 .subunit.NIR {
-    fill: #ccf3a7;
+    fill: #278a34;
 }
 
+/* England subunit colour */
 .subunit.ENG {
-    fill: #b4eeb2;
+    fill: #16cf82;
 }
 
+/*Not part of UK terretory so not displayed*/
 .subunit.IRL {
     display: none;
 }
@@ -21,29 +56,30 @@
 
 .subunit-boundary {
     fill: none;
-    stroke: #777;
+    stroke: #9e4a4a;
     stroke-dasharray: 2, 2;
     stroke-linejoin: round;
 }
 
 .subunit-boundary.IRL {
-    stroke: #aaa;
+    stroke: #532a2a;
 }
 
 text {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif ;
+    font-size: 12px;
     pointer-events: none;
+    color: black;
 }
 
 .place,
 .place-label {
-    fill: #5f33c5;
+    fill: black;
 }
 
 
 .place-label-circle {
-    fill: #f71818;
+    fill: yellow;
 }
 
 .place-label-circle:hover {
@@ -51,31 +87,11 @@ text {
 }
 
 .subunit-label {
-    fill: #ddcb25;
+    fill: black;
     fill-opacity: .5;
     font-size: 20px;
     font-weight: 300;
     text-anchor: middle;
-}
-
-
-.header,
-.footer {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-/* Custom page header */
-.header {
-    border-bottom: 1px solid #e5e5e5;
-
-    /* Make the masthead heading the same height as the navigation */
-    h3 {
-        margin-top: 0;
-        margin-bottom: 0;
-        line-height: 40px;
-        padding-bottom: 19px;
-    }
 }
 
 /* Custom page footer */
@@ -85,19 +101,9 @@ text {
     border-top: 1px solid #e5e5e5;
 }
 
-/* .container-narrow>hr {
-    margin: 30px 0;
-} */
-
-
-/* Remove the padding we set earlier */
-/* .header,
-
-.footer {
-    padding-left: 0;
-    padding-right: 0;
+/*Input control css*/
+.bigText {
+    height:25px;
+    width: 75px;
 }
 
-.header {
-    margin-bottom: 30px;
-} */
