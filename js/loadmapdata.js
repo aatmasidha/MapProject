@@ -27,7 +27,7 @@ function loadData() {
         var projection = d3.geo.albers()
             .center([0, 55.4])
             .rotate([4.4, 0])
-            .parallels([50, 60])
+            .parallels([25, 40])
             .scale(5000)
             .translate([width / 2, height / 2]);
 
@@ -111,7 +111,7 @@ function loadData() {
                 .attr("stroke", "#f71818")
                 .attr("stroke-width", 3)
                 .attr("fill-opacity", .4)
-                .append("title").text(function (d) { return d.population });
+                .append("title").text(function (d) { return ( "Population:" +d.population); });
 
             console.log("uk.feature:", topojson.feature(uk, uk.objects.places))
 
