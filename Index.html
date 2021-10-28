@@ -19,16 +19,20 @@
 
 <body>
     <!-- <div class="container"> -->
-        <div>
+    <div>
         <div class="header">
             <h3 class="headerText">UK Map</h3>
         </div>
     </div>
     <div>
         <p></p>
-        <label for="numberInput" class="inputLabel">Select number of towns:</label>        
-        <input type="number" name="numberInput" id="numberInput" max="50" min="1" step="1"  class="bigText"  >
+        <label for="numberInput" class="inputLabel">Select number of towns:</label>
+        <input type="number" name="numberInput" id="numberInput" max="50" min="1" step="1" class="bigText">
         <button type="button" class="bigText" onclick="myFunction()">sumbit</button>
+
+        <div class="slidecontainer">
+            <input type="range" min="1" max="50" value="5" class="slider" id="myRange" oninput="getNumberTowns()">
+        </div>
     </div>
     <script type="text/javascript">
 
@@ -42,7 +46,7 @@
             else {
                 numTowns = showTowns;
                 console.log("Show towns:", showTowns);
-                setCookie("NumberOfTowns", numTowns, 1)
+                setCookie("NumberOfTowns", numTowns, 1);
                 window.location.reload(true);
                 return; // whatever you want to do with it
             }
@@ -54,6 +58,18 @@
             let expires = "expires=" + d.toUTCString();
             document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
             document.getElementById("numberInput").value = cvalue;
+        }
+
+
+       
+        function getNumberTowns() {
+            var slider = document.getElementById("myRange").value;
+        var output = document.getElementById("demo");
+        // Update the current slider value (each time you drag the slider handle)
+            numTowns = slider;
+            document.getElementById("numberInput").value = slider;
+            setCookie("NumberOfTowns", numTowns, 1);
+            window.location.reload(true);
         }
     </script>
 </body>
