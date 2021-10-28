@@ -24,6 +24,8 @@ function loadData() {
         // <!-- albers is a type of projection -->
         // <!-- Aparna working code -->
 
+
+
         var projection = d3.geo.albers()
             .center([0, 55.4])
             .rotate([4.4, 0])
@@ -33,7 +35,7 @@ function loadData() {
 
         var path = d3.geo.path()
             .projection(projection)
-            .pointRadius(5);
+            .pointRadius(10);
 
 
         // <!-- Gets or sets the bound data for each selected element.
@@ -45,12 +47,16 @@ function loadData() {
             .datum(subunits)
             .attr("d", path);
 
+        //Reads the subunit data from uk.json and attaches attribute class and d (svg path attribute)
+        //d attribute example - https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d
         svg.selectAll(".subunit")
             .data(topojson.feature(uk, uk.objects.subunits).features)
             .enter().append("path")
             .attr("class", function (d) { return "subunit " + d.id; })
             .attr("d", path);
 
+        // Returns the GeoJSON MultiLineString geometry object representing the mesh for the specified object in the given topology.
+        //  This is useful for rendering strokes in complicated objects efficiently, as edges that are shared by multiple features are only stroked once.
         svg.append("path")
             .datum(topojson.mesh(uk, uk.objects.subunits, function (a, b) { return a !== b && a.id !== "IRL"; }))
             .attr("d", path)
@@ -70,16 +76,17 @@ function loadData() {
             .text(function (d) { return d.properties.name; });
 
         var cityData = [];
-        // numTowns = Math.floor((Math.random() * 50) + 1);
 
         numTownsString = getCookie("NumberOfTowns");
         if (numTownsString !== null) {
             numTowns = parseInt(numTownsString)
             document.getElementById("numberInput").value = numTowns;
+            document.getElementById("myRange").value = numTowns;
         }
         else {
             numTowns = 25;
             document.getElementById("numberInput").value = numTowns;
+            document.getElementById("myRange").value = numTowns;
         }
 
         d3.json("http://35.233.33.123/Circles/Towns/" + numTowns, function (data) {
@@ -97,6 +104,11 @@ function loadData() {
                 };
                 cityData[j] = cityDataAdd;
             }
+
+
+
+            // A projection function takes a two-element array of numbers representing the coordinates of a location, [longitude, latitude], 
+            // and returns a similar two-element array of numbers representing the projected pixel position [x, y]. 
 
             console.log("City JSON data:", cityData);
             svg
@@ -126,8 +138,6 @@ function loadData() {
             svg.selectAll(".place-label")
                 .attr("x", function (d) { return d.long > -1 ? 6 : -6; })
                 .style("text-anchor", function (d) { return ([d.long, d.lat]) > -1 ? "start" : "end"; });
-
-            
         });
     });
 
