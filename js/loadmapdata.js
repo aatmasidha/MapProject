@@ -78,7 +78,7 @@ function loadData() {
         var cityData = [];
 
         numTownsString = getCookie("NumberOfTowns");
-        if (numTownsString !== null) {
+        if (numTownsString !== null && numTownsString !== "" ) {
             numTowns = parseInt(numTownsString)
             document.getElementById("numberInput").value = numTowns;
             document.getElementById("myRange").value = numTowns;
