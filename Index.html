@@ -27,11 +27,11 @@
     <div>
         <p></p>
         <label for="numberInput" class="inputLabel">Select number of towns:</label>
-        <input type="number" name="numberInput" id="numberInput" max="50" min="1" step="1" class="bigText">
+        <input type="number" name="numberInput" id="numberInput" max="10" min="1" step="1" class="bigText">
         <button type="button" class="bigText" onclick="myFunction()">sumbit</button>
 
         <div class="slidecontainer">
-            <input type="range" min="1" max="50" value="5" class="slider" id="myRange" oninput="getNumberTowns()">
+            <input type="range" min="1" max="10" value="5" class="slider" id="myRange" oninput="getNumberTowns()">
         </div>
     </div>
     <script type="text/javascript">
@@ -39,8 +39,8 @@
         function myFunction() {
             let showTowns = document.getElementById("numberInput").value;
 
-            if (showTowns < 1 || showTowns > 50) {
-                alert("Number must be between 1 and 50");
+            if (showTowns < 1 || showTowns > 10) {
+                alert("Number must be between 1 and 10");
                 return false;
             }
             else {
